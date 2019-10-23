@@ -1,4 +1,5 @@
 import React from "react";
+import PropTypes from "prop-types";
 import { FormControl, FormLabel, FormErrorMessage } from "@chakra-ui/core";
 import PlacesAutocomplete from "react-places-autocomplete";
 import Select from "react-select";
@@ -64,3 +65,9 @@ export default class PlacesSelect extends React.Component {
     );
   }
 }
+
+PlacesAutocomplete.propTypes = {
+  required: PropTypes.bool,
+  label: PropTypes.string,
+  options: PropTypes.array
+};

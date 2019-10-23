@@ -1,4 +1,5 @@
 import React from "react";
+import PropTypes from "prop-types";
 import {
   FormControl,
   FormLabel,
@@ -18,6 +19,11 @@ const RadioButton = ({ field, id, label, ...props }) => {
   );
 };
 
+RadioButton.propTypes = {
+  id: PropTypes.string,
+  label: PropTypes.string
+};
+
 const RadioButtonGroup = ({ error, touched, label, children, required }) => {
   return (
     <FormControl mb={2} isRequired={required} isInvalid={error && touched}>
@@ -26,6 +32,11 @@ const RadioButtonGroup = ({ error, touched, label, children, required }) => {
       <FormErrorMessage>{error}</FormErrorMessage>
     </FormControl>
   );
+};
+
+RadioButtonGroup.propTypes = {
+  required: PropTypes.bool,
+  label: PropTypes.string
 };
 
 export { RadioButton, RadioButtonGroup };

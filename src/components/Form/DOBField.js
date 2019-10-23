@@ -1,4 +1,5 @@
 import React from "react";
+import PropTypes from "prop-types";
 import {
   FormControl,
   FormLabel,
@@ -72,5 +73,11 @@ const DOBField = ({
     <FormErrorMessage>{error && "Required"}</FormErrorMessage>
   </FormControl>
 );
+
+DOBField.propTypes = {
+  required: PropTypes.bool,
+  label: PropTypes.string,
+  options: PropTypes.object
+};
 
 export default DOBField;

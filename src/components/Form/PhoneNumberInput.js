@@ -1,4 +1,5 @@
 import React from "react";
+import PropTypes from "prop-types";
 import {
   FormControl,
   FormLabel,
@@ -42,4 +43,8 @@ const PhoneNumberInput = ({
   </FormControl>
 );
 
+PhoneNumberInput.propTypes = {
+  required: PropTypes.bool,
+  label: PropTypes.string
+};
 export default PhoneNumberInput;

@@ -1,4 +1,5 @@
 import React from "react";
+import PropTypes from "prop-types";
 import { FormControl, FormLabel, FormErrorMessage } from "@chakra-ui/core";
 import Select from "react-select";
 
@@ -37,4 +38,10 @@ const CustomSelect = ({
   </FormControl>
 );
 
+CustomSelect.propTypes = {
+  required: PropTypes.bool,
+  label: PropTypes.string,
+  options: PropTypes.array,
+  isMulti: PropTypes.bool
+};
 export default CustomSelect;

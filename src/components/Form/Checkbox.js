@@ -1,4 +1,5 @@
 import React from "react";
+import PropTypes from "prop-types";
 import {
   FormControl,
   FormLabel,
@@ -16,6 +17,11 @@ const CustomCheckbox = ({ field, id, label, ...props }) => {
       </Checkbox>
     </Box>
   );
+};
+
+CustomCheckbox.propTypes = {
+  id: PropTypes.string,
+  label: PropTypes.string
 };
 
 // Checkbox group
@@ -59,5 +65,13 @@ class CustomCheckboxGroup extends React.Component {
     );
   }
 }
+
+CustomCheckboxGroup.propTypes = {
+  value: PropTypes.array,
+  error: PropTypes.string,
+  touched: PropTypes.bool,
+  label: PropTypes.string,
+  children: PropTypes.node
+};
 
 export { CustomCheckbox as Checkbox, CustomCheckboxGroup as CheckboxGroup };

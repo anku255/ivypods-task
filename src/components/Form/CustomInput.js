@@ -1,4 +1,5 @@
 import React from "react";
+import PropTypes from "prop-types";
 import {
   FormControl,
   FormLabel,
@@ -21,5 +22,10 @@ const CustomInput = ({
     <FormErrorMessage>{errors[field.name]}</FormErrorMessage>
   </FormControl>
 );
+
+CustomInput.propTypes = {
+  required: PropTypes.bool,
+  label: PropTypes.string
+};
 
 export default CustomInput;
