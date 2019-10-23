@@ -14,13 +14,16 @@ import {
   DOBField,
   PlacesSelect
 } from "../../components/Form";
+import dobOptions from "./data/dobOptions.json";
 
 const UserSchema = Yup.object().shape({
   name: Yup.string()
     .min(2, "Too Short!")
     .max(100, "Too Long!")
     .required("Required"),
-  mobile: Yup.string().required("Required"),
+  mobile: Yup.string()
+    .length(10, "Mobile Number should have 10 digits")
+    .required("Required"),
   gender: Yup.string().required("Required!"),
   languages: Yup.array()
     .min(1, "Pick at least 1 language")
@@ -51,12 +54,6 @@ const languageOptions = [
   { value: "French", label: "French" },
   { value: "Japanese", label: "Japanese" }
 ];
-
-const dobOptions = {
-  days: [{ label: "1", value: "01" }, { label: "2", value: "2" }],
-  months: [{ label: "Jan", value: "01" }, { label: "Feb", value: "02" }],
-  years: [{ label: "2018", value: "2018" }, { label: "2007", value: "2007" }]
-};
 
 const initialValues = {
   name: "ank",
