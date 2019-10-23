@@ -20,9 +20,10 @@ const CustomSelect = ({
   name,
   onChange,
   onBlur,
-  isMulti
+  isMulti,
+  required
 }) => (
-  <FormControl mb={2} isInvalid={!!error && touched}>
+  <FormControl mb={2} isRequired={required} isInvalid={!!error && touched}>
     <FormLabel as="legend">{label}</FormLabel>
     <Select
       styles={!!error && touched ? customStyles : undefined}

@@ -22,7 +22,7 @@ const UserSchema = Yup.object().shape({
   mobile: Yup.string().required("Required"),
   gender: Yup.string().required("Required!"),
   languages: Yup.array()
-    .min(2, "Pick at least 2 languages")
+    .min(1, "Pick at least 1 language")
     .of(
       Yup.object().shape({
         label: Yup.string().required(),
@@ -35,6 +35,12 @@ const UserSchema = Yup.object().shape({
       day: Yup.string().required(),
       month: Yup.string().required(),
       year: Yup.string().required()
+    })
+    .required("Required"),
+  address: Yup.object()
+    .shape({
+      label: Yup.string().required(),
+      value: Yup.string().required()
     })
     .required("Required")
 });
@@ -72,13 +78,13 @@ const UserForm = () => {
         initialValues={initialValues}
         validationSchema={UserSchema}
         onSubmit={values => {
-          alert(JSON.stringify(values, null, 2));
-
-          // For select
-          // const payload = {
-          //   ...values,
-          //   languages: values.languages.map(t => t.value),
-          // };
+          const payload = {
+            ...values,
+            languages: values.languages.map(t => t.value),
+            dob: `${values.dob.day}/${values.dob.month}${values.dob.year}`,
+            address: values.address.value
+          };
+          alert(JSON.stringify(payload, null, 2));
         }}
         render={({
           isSubmitting,
@@ -91,12 +97,14 @@ const UserForm = () => {
           <Form>
             <Stack spacing={3}>
               <Field
+                required
                 name="name"
                 label="Name"
                 placeholder="John Doe"
                 component={CustomInput}
               />
               <Field
+                required
                 name="mobile"
                 label="Mobile No"
                 component={PhoneNumberInput}
@@ -107,6 +115,7 @@ const UserForm = () => {
                 value={values.gender}
                 error={errors.gender}
                 touched={touched.gender}
+                required
               >
                 <Field
                   component={RadioButton}
@@ -165,6 +174,7 @@ const UserForm = () => {
                 onBlur={setFieldTouched}
                 error={errors.languages}
                 touched={touched.languages}
+                required
               />
               <DOBField
                 name="dob"
@@ -175,6 +185,7 @@ const UserForm = () => {
                 onBlur={setFieldTouched}
                 error={errors.dob}
                 touched={touched.dob}
+                required
               />
               <PlacesSelect
                 name="address"
@@ -184,6 +195,7 @@ const UserForm = () => {
                 onBlur={setFieldTouched}
                 error={errors.address}
                 touched={touched.address}
+                required
               />
             </Stack>
 
@@ -195,6 +207,7 @@ const UserForm = () => {
             >
               Submit
             </Button>
+            <div>{JSON.stringify(values, null, 2)}</div>
           </Form>
         )}
       />

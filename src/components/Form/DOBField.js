@@ -25,9 +25,10 @@ const DOBField = ({
   label,
   name,
   onChange,
-  onBlur
+  onBlur,
+  required
 }) => (
-  <FormControl mb={2} isInvalid={!!error && touched}>
+  <FormControl isRequired={required} mb={2} isInvalid={!!error && touched}>
     <FormLabel as="legend">{label}</FormLabel>
     <Grid templateColumns="repeat(3, 1fr)" gap={6}>
       <Box w="100%">

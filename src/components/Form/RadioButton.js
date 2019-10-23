@@ -18,9 +18,9 @@ const RadioButton = ({ field, id, label, ...props }) => {
   );
 };
 
-const RadioButtonGroup = ({ error, touched, label, children }) => {
+const RadioButtonGroup = ({ error, touched, label, children, required }) => {
   return (
-    <FormControl mb={2} isInvalid={error && touched}>
+    <FormControl mb={2} isRequired={required} isInvalid={error && touched}>
       <FormLabel as="legend">{label}</FormLabel>
       <Flex>{children}</Flex>
       <FormErrorMessage>{error}</FormErrorMessage>

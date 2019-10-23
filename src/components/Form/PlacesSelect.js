@@ -27,9 +27,18 @@ export default class PlacesSelect extends React.Component {
   };
 
   render() {
-    const { error, touched, value, label, name, onChange, onBlur } = this.props;
+    const {
+      error,
+      touched,
+      value,
+      label,
+      name,
+      onChange,
+      onBlur,
+      required
+    } = this.props;
     return (
-      <FormControl isInvalid={!!error && touched}>
+      <FormControl isRequired={required} isInvalid={!!error && touched}>
         <FormLabel as="legend">{label}</FormLabel>
         <PlacesAutocomplete
           value={this.state.inputValue}
@@ -50,7 +59,7 @@ export default class PlacesSelect extends React.Component {
             />
           )}
         </PlacesAutocomplete>
-        <FormErrorMessage>{error}</FormErrorMessage>
+        <FormErrorMessage>{error && "Required"}</FormErrorMessage>
       </FormControl>
     );
   }

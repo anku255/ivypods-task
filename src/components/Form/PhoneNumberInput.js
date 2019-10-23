@@ -19,9 +19,13 @@ function isValidPhoneNumber(number) {
 const PhoneNumberInput = ({
   field,
   form: { touched, errors, setFieldValue },
+  required,
   ...props
 }) => (
-  <FormControl isInvalid={errors[field.name] && touched[field.name]}>
+  <FormControl
+    isRequired={required}
+    isInvalid={errors[field.name] && touched[field.name]}
+  >
     <FormLabel htmlFor={field.name}>{props.label}</FormLabel>
     <InputGroup>
       <InputLeftAddon children="+91" />
