@@ -48,6 +48,7 @@ export default class PlacesSelect extends React.Component {
           {({ getInputProps, suggestions, loading }) => (
             <Select
               styles={!!error && touched ? customStyles : undefined}
+              placeholder="Type your city name..."
               isClearable
               isLoading={loading}
               onInputChange={value =>

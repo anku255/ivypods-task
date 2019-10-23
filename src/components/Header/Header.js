@@ -14,9 +14,8 @@ const StyledHeader = styled.header`
       display: flex;
       height: 100%;
       align-items: center;
-      .logo {
-        max-width: 8rem;
-      }
+      font-size: 1.2rem;
+      font-weight: bold;
     }
 
     .grow {
@@ -34,21 +33,6 @@ const Header = () => {
           </a>
         </div>
         <div className="grow"></div>
-        {/* <div className="nav__right">
-          <div className="notification">
-            <Box as={FaRegBell} size="32px" color="#A6A6A6" />
-            <Badge style={{ borderRadius: "50%" }} fontSize="0.7em">
-              699
-            </Badge>
-          </div>
-          <div className="avatar">
-            <Avatar
-              style={{ background: "#B3E77F", color: "#FFF" }}
-              size="sm"
-              name="A B"
-            />
-          </div>
-        </div> */}
       </nav>
     </StyledHeader>
   );

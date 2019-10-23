@@ -56,17 +56,17 @@ const languageOptions = [
 ];
 
 const initialValues = {
-  name: "ank",
-  mobile: "987",
-  gender: "male",
+  name: "",
+  mobile: "",
+  gender: "",
   hobbies: [],
-  languages: [{ label: "English", value: "English" }],
+  languages: [],
   dob: {
-    day: { label: "1", value: "1" },
-    month: { label: "Feb", value: "Feb" },
-    year: { label: "2017", value: "2017" }
+    day: "",
+    month: "",
+    year: ""
   },
-  address: { label: "RAnchi", value: "RAnchi" }
+  address: ""
 };
 
 const UserForm = ({ handleSubmit }) => {
@@ -80,7 +80,6 @@ const UserForm = ({ handleSubmit }) => {
       pt={2}
       pb={2}
       rounded="lg"
-      overflow="hidden"
     >
       <Heading mb={4} as="h1" size="xl" textAlign="center">
         Registration Form
@@ -221,10 +220,10 @@ const UserForm = ({ handleSubmit }) => {
               variantColor="teal"
               isLoading={isSubmitting}
               type="submit"
+              size="lg"
             >
               Submit
             </Button>
-            <div>{JSON.stringify(values, null, 2)}</div>
           </Form>
         )}
       />
