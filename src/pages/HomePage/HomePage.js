@@ -2,6 +2,7 @@ import React from "react";
 import styled from "@emotion/styled";
 import Header from "../../components/Header";
 import Footer from "../../components/Footer";
+import UserForm from "./UserForm";
 
 const StyledHomePage = styled.div`
   section.main {
@@ -18,7 +19,9 @@ const HomePage = () => {
     <StyledHomePage>
       <Header />
       <section className="main">
-        <main>{/* TODO: Form will go here */}</main>
+        <main>
+          <UserForm />
+        </main>
       </section>
       <Footer />
     </StyledHomePage>

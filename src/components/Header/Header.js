@@ -1,7 +1,5 @@
 import React from "react";
 import styled from "@emotion/styled";
-import { Avatar, Box, Badge } from "@chakra-ui/core";
-import { FaRegBell } from "react-icons/fa";
 
 const StyledHeader = styled.header`
   nav {
