@@ -1,7 +1,7 @@
 import React from "react";
 import { Formik, Field, Form } from "formik";
 import * as Yup from "yup";
-import { Stack, Button } from "@chakra-ui/core";
+import { Stack, Button, Box, Heading } from "@chakra-ui/core";
 import {
   CustomInput,
   PhoneNumberInput,
@@ -73,7 +73,20 @@ const initialValues = {
 
 const UserForm = () => {
   return (
-    <div>
+    <Box
+      maxWidth={1000}
+      ml="auto"
+      mr="auto"
+      borderWidth="1px"
+      p={6}
+      pt={2}
+      pb={2}
+      rounded="lg"
+      overflow="hidden"
+    >
+      <Heading mb={4} as="h1" size="xl" textAlign="center">
+        Registration Form
+      </Heading>
       <Formik
         initialValues={initialValues}
         validationSchema={UserSchema}
@@ -211,7 +224,7 @@ const UserForm = () => {
           </Form>
         )}
       />
-    </div>
+    </Box>
   );
 };
 
