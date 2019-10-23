@@ -1,4 +1,5 @@
 import React from "react";
+import PropTypes from "prop-types";
 import { Formik, Field, Form } from "formik";
 import * as Yup from "yup";
 import { Stack, Button, Box, Heading } from "@chakra-ui/core";
@@ -58,20 +59,20 @@ const dobOptions = {
 };
 
 const initialValues = {
-  name: "",
-  mobile: "",
-  gender: "",
+  name: "ank",
+  mobile: "987",
+  gender: "male",
   hobbies: [],
-  languages: [],
+  languages: [{ label: "English", value: "English" }],
   dob: {
-    day: "",
-    month: "",
-    year: ""
+    day: { label: "1", value: "1" },
+    month: { label: "Feb", value: "Feb" },
+    year: { label: "2017", value: "2017" }
   },
-  address: ""
+  address: { label: "RAnchi", value: "RAnchi" }
 };
 
-const UserForm = () => {
+const UserForm = ({ handleSubmit }) => {
   return (
     <Box
       maxWidth={1000}
@@ -90,14 +91,20 @@ const UserForm = () => {
       <Formik
         initialValues={initialValues}
         validationSchema={UserSchema}
-        onSubmit={values => {
+        onSubmit={(values, { setSubmitting }) => {
           const payload = {
             ...values,
             languages: values.languages.map(t => t.value),
-            dob: `${values.dob.day}/${values.dob.month}${values.dob.year}`,
+            dob: `${values.dob.day.value}/${values.dob.month.value}/${values.dob.year.value}`,
             address: values.address.value
           };
-          alert(JSON.stringify(payload, null, 2));
+
+          console.log("payload", payload);
+
+          setTimeout(() => {
+            handleSubmit(payload);
+            setSubmitting(false);
+          }, 1000);
         }}
         render={({
           isSubmitting,
@@ -229,3 +236,7 @@ const UserForm = () => {
 };
 
 export default UserForm;
+
+UserForm.propTypes = {
+  handleSubmit: PropTypes.func.isRequired
+};

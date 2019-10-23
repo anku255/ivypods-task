@@ -1,8 +1,10 @@
-import React from "react";
+import React, { useState } from "react";
 import styled from "@emotion/styled";
+
 import Header from "../../components/Header";
 import Footer from "../../components/Footer";
 import UserForm from "./UserForm";
+import FromDataModal from "./data/FromDataModal";
 
 const StyledHomePage = styled.div`
   section.main {
@@ -15,13 +17,25 @@ const StyledHomePage = styled.div`
 `;
 
 const HomePage = () => {
+  const [isModalVisible, setIsModalVisible] = useState(false);
+  const [userData, setUserData] = useState({});
   return (
     <StyledHomePage>
       <Header />
       <section className="main">
         <main>
-          <UserForm />
+          <UserForm
+            handleSubmit={data => {
+              setUserData(data);
+              setIsModalVisible(true);
+            }}
+          />
         </main>
+        <FromDataModal
+          data={userData}
+          isOpen={isModalVisible}
+          onClose={() => setIsModalVisible(false)}
+        />
       </section>
       <Footer />
     </StyledHomePage>
