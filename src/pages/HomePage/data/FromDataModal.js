@@ -18,7 +18,7 @@ const FromDataModal = ({ isOpen, onClose, data }) => {
         <ModalCloseButton />
         <ModalBody>
           <Text fontSize="md">
-            <pre>{JSON.stringify(data, null, 10)}</pre>
+            <pre>{JSON.stringify(data, null, 2)}</pre>
           </Text>
         </ModalBody>
       </ModalContent>
